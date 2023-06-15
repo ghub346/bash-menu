@@ -8,7 +8,7 @@ fi
 
 #
 # Load bash-menu script
-#
+##
 # NOTE: Ensure this is done before using
 #       or overriding menu functions/variables.
 #
@@ -45,11 +45,12 @@ actionA() {
 # If the server ip || password dont exist, call servercreds function
 
 
-    if [ -z "$serverip" ]
+    if [ -z ${serverip} ]
 	then	
-	      echo "\$serverip is empty"
+	      echo "Server IP is not set."
+	      servercreds	
 	else
-	      echo "\$serverip is NOT empty"
+	      echo "Next task."
     fi
 
 
