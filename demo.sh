@@ -107,14 +107,11 @@ fi
 }
 
 actionB() {
-    echo "Test established connection."
+    echo "Initial config, user creation."
     
     sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/0-init-config.sh
 
     echo -n "Press enter to continue ... "
-
-
-
 
     read response
 
@@ -122,7 +119,7 @@ actionB() {
 }
 
 actionC() {
-    echo "Action C"
+    echo "Install core software packages."
 
 
 sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/1-install-core-software.sh
@@ -134,9 +131,11 @@ sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/
 }
 
 actionD() {
-    echo "Action D"
-    echo "Install Tailscale"	
+    echo "Install additional software"
 
+    ### Option's to install Tailscale, Megacmd, ...  Can also check option's,to perform additional task's such as post configuratiom, etc... etc...
+    echo "Install Tailscale"	
+    
     sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-tailscale.sh
 
     read response
