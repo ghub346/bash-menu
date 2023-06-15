@@ -45,11 +45,11 @@ actionA() {
 # If the server ip || password dont exist, call servercreds function
 
 
-    if [ -z "$serverip" || -z "$PASSWORD" ]
+    if [ -z "$serverip" ]
 	then	
 	      echo "\$serverip is empty"
 	else
-	      echo "\$PASSWORD is NOT empty"
+	      echo "\$serverip is NOT empty"
     fi
 
 
