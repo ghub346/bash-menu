@@ -44,6 +44,15 @@ servercreds() {
 actionA() {
 # If the server ip || password dont exist, call servercreds function
 
+
+    if [ -z "$serverip" || -z "$PASSWORD" ]
+	then	
+	      echo "\$serverip is empty"
+	else
+	      echo "\$PASSWORD is NOT empty"
+    fi
+
+
     echo "Connect to new server."
 
 #    Moved to seperate function.
