@@ -22,15 +22,38 @@ fi
 ## should continue, or return 0 to signify the menu
 ## should exit.
 ################################
-actionA() {
-    echo "Connect to new server."
+
+servercreds() {
+
+    echo -n "Provide server information."
+
     echo "Enter IP address of the server."
     read serverip
-	
+        
     echo "Provide root password to the server."
     echo $serverip
    
     read -s -p "Password: " PASSWORD
+
+#    read response
+
+#    return 1
+}
+
+
+actionA() {
+# If the server ip || password dont exist, call servercreds function
+
+    echo "Connect to new server."
+
+#    Moved to seperate function.
+#    echo "Enter IP address of the server."
+#    read serverip
+#	
+#    echo "Provide root password to the server."
+#    echo $serverip
+   
+#    read -s -p "Password: " PASSWORD
 
 
 ### For this section, check  forlogic options, if host is already in known list, don't execute the command.
