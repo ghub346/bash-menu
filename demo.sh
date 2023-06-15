@@ -133,6 +133,43 @@ sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/
 actionD() {
     echo "Install additional software"
 
+
+PS3="Select additional software to install: "
+
+select opt in tailscale megacmd docker node quit; do
+
+  case $opt in
+    tailscale)
+      echo "Install Tailscale"	
+    
+      sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-tailscale.sh
+
+      ;;
+    megacmd)
+      read -p "Enter the first number: " n1
+      read -p "Enter the second number: " n2
+      echo "$n1 - $n2 = $(($n1-$n2))"
+      ;;
+    docker)
+      read -p "Enter the first number: " n1
+      read -p "Enter the second number: " n2
+      echo "$n1 * $n2 = $(($n1*$n2))"
+      ;;
+    node)
+      read -p "Enter the first number: " n1
+      read -p "Enter the second number: " n2
+      echo "$n1 / $n2 = $(($n1/$n2))"
+      ;;
+    quit)
+      break
+      ;;
+    *) 
+      echo "Invalid option $REPLY"
+      ;;
+  esac
+done
+
+
     ### Option's to install Tailscale, Megacmd, ...  Can also check option's,to perform additional task's such as post configuratiom, etc... etc...
     echo "Install Tailscale"	
     
