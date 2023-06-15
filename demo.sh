@@ -23,7 +23,49 @@ fi
 ## should exit.
 ################################
 actionA() {
-    echo "Action A"
+    echo "Connect to new server."
+    echo "Enter IP address of the server."
+    read serverip
+	
+    echo "Provide root password to the server."
+    echo $serverip
+   
+    read -s -p "Password: " PASSWORD
+
+
+### For this section, check  forlogic options, if host is already in known list, don't execute the command.
+
+
+    echo -n "bypass SSH key verification for the provided host."
+
+###  Remove existing entries from known_hosts, if exists.
+
+    ssh-keygen -f "/home/baller175/.ssh/known_hosts" -R "$serverip"
+
+### https://www.putorius.net/automatically-accept-ssh-fingerprint.html - method 2 in script.
+
+    ssh-keyscan -H $serverip >> ~/.ssh/known_hosts
+
+#    ssh -o "StrictHostKeyChecking no" $serverip
+
+    echo -n "Testing connection to the server"
+
+    sshpass -p $PASSWORD ssh -q root@$serverip exit
+
+
+### If the result is successful , value returned will be 0.
+    echo $?
+
+    if [ $? -ne 0 ]
+	then
+    echo "The connection failed, check manually."
+	else
+  echo "Connection successfully established."
+fi
+
+
+
+    echo -n " "	
 
     echo -n "Press enter to continue ... "
     read response
@@ -32,9 +74,15 @@ actionA() {
 }
 
 actionB() {
-    echo "Action B"
+    echo "Test established connection."
+    
+    sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/0-init-config.sh
 
     echo -n "Press enter to continue ... "
+
+
+
+
     read response
 
     return 1
@@ -43,10 +91,25 @@ actionB() {
 actionC() {
     echo "Action C"
 
+
+sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/1-install-core-software.sh
+
     echo -n "Press enter to continue ... "
     read response
 
     return 1
+}
+
+actionD() {
+    echo "Action D"
+    echo "Install Tailscale"	
+
+    sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-tailscale.sh
+
+    read response
+
+    return 1   
+
 }
 
 actionX() {
@@ -71,8 +134,9 @@ menuItems=(
     "1. Item 1"
     "2. Item 2"
     "3. Item 3"
-    "A. Item A"
-    "B. Item B"
+    "4. Item 4"
+    "B. Item 1"
+    "C. Item 2"	
     "Q. Exit  "
 )
 
@@ -81,6 +145,7 @@ menuActions=(
     actionA
     actionB
     actionC
+    actionD	
     actionA
     actionB
     actionX
