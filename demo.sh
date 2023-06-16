@@ -146,9 +146,10 @@ select opt in tailscale megacmd docker node quit; do
 
       ;;
     megacmd)
-      read -p "Enter the first number: " n1
-      read -p "Enter the second number: " n2
-      echo "$n1 - $n2 = $(($n1-$n2))"
+
+      echo "Install Mega"
+      sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-megacmd.sh
+
       ;;
     docker)
       read -p "Enter the first number: " n1
