@@ -46,7 +46,10 @@ do
     echo "ITEM: *** $item ***"
 done
 
+        echo -n "Press enter to continue ... "
+        read response
 
+        return 1
 
 }
 
