@@ -112,6 +112,8 @@ while choice=$(dialog --title "$TITLE" \
         ;; # some action on 1
         2) targetconnect
 	;; # some action on 2
+ 	3) softscripts
+	;;
         *) ;; # some action on other
     esac
 done
