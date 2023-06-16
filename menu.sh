@@ -26,6 +26,11 @@ targetconnect() {
 
 	echo "uname -a" | sshpass -p $PASSWORD ssh root@$serverip /bin/bash
 
+        echo -n "Press enter to continue ... "
+        read response
+
+        return 1
+
 }
 
 softscripts() {
