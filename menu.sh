@@ -101,7 +101,8 @@ fi
 
 
 items=(1 "Item 1"
-       2 "Item 2")
+       2 "Item 2"
+       3 "Item 3")
 
 while choice=$(dialog --title "$TITLE" \
                  --menu "Please select" 10 40 3 "${items[@]}" \
