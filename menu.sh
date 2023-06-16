@@ -41,8 +41,12 @@ do
     saisoft=(${saisoft[*]} "$script")
 done
 
-for item in "${saisoft[@]}"
+for item in "${!saisoft[@]}"
 do
+  echo " index---------------content"
+  echo " $item                  ${saisoft[$item]}"
+
+    
     echo "ITEM: *** $item ***"
 done
 
