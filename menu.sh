@@ -109,7 +109,8 @@ fi
 
 items=(1 "Item 1"
        2 "Item 2"
-       3 "Item 3")
+       3 "Item 3"
+       4 "Install Software's")
 
 while choice=$(dialog --title "$TITLE" \
                  --menu "Please select" 10 40 3 "${items[@]}" \
@@ -121,6 +122,8 @@ while choice=$(dialog --title "$TITLE" \
         2) targetconnect
 	;; # some action on 2
  	3) softscripts
+	;;
+ 	4) softscripts
 	;;
         *) ;; # some action on other
     esac
