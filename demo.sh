@@ -153,7 +153,9 @@ do
 
       ;;
         "docker")
-           echo "$opt - let's prepare for a lot of compilation";;
+           echo "$opt - Installation will now take place."
+	   sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-docker.sh   
+      ;;
         "node")
            echo "$opt - let's prepare for a lot of compilation";;
         "quit")
