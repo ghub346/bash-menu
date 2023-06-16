@@ -80,7 +80,7 @@ while choice=$(dialog --title "$TITLE" \
                  2>&1 >/dev/tty)
     do
     case $choice in
-        1) interconnect
+        1) initconnect
         ;; # some action on 1
         2) ;; # some action on 2
         *) ;; # some action on other
