@@ -123,7 +123,7 @@ while choice=$(dialog --title "$TITLE" \
 	;; # some action on 2
  	3) softscripts
 	;;
- 	4) targetconnect ${saisoft[13]}
+ 	4) targetconnect "${saisoft[13]}"
 	;;
         *) ;; # some action on other
     esac
