@@ -124,6 +124,7 @@ while choice=$(dialog --title "$TITLE" \
  	3) softscripts
 	;;
  	4) echo "${saisoft[13]}"
+  	sleep 10
 	;;
         *) ;; # some action on other
     esac
