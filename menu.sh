@@ -34,15 +34,49 @@ done
 
 for item in "${!saisoft[@]}"
 do
-  echo " index---------------content"
-  echo " $item                  ${saisoft[$item]}"
+#  echo " index---------------content"
+#  echo " $item                  ${saisoft[$item]}"
 
     
-    echo "ITEM: *** $item ***"
+#    echo "ITEM: *** $item ***"
 done
 
 
-	sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[13]}"
+select soft in Tailscale MegaCMD Docker
+do
+
+case $soft in
+# Two case values are declared here for matching
+"Tailscale")
+echo "I also use $soft."
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[13]}"
+;;
+
+# Three case values are declared here for matching
+"MegaCMD")
+echo "Why don't you try Linux?"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[6]}"
+;;
+
+# Three case values are declared here for matching
+"Docker")
+echo "Why don't you try Linux?"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[3]}"
+;;
+
+
+# Matching with invalid data
+*)
+echo "Invalid entry."
+break
+;;
+esac
+
+done
+
+
+
+#	sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[13]}"
 
         echo -n "Press enter to continue ... "
         read response
