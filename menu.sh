@@ -24,7 +24,7 @@ servercreds() {
 
 targetconnect() {
 
-	 \| sshpass -p $PASSWORD ssh root@$serverip /bin/bash
+	sshpass -p $PASSWORD ssh root@$serverip /bin/bash
 
         echo -n "Press enter to continue ... "
         read response
