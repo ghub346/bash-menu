@@ -22,6 +22,29 @@ servercreds() {
 
 }
 
+inituser() {
+
+    if [ -z ${serverip} ]
+	then	
+	      echo "Server IP is not set."
+	      servercreds	
+	else
+	      echo "Next task."
+    fi
+
+
+    echo "Initial config, user creation."
+    
+    sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/0-init-config.sh
+
+    echo -n "Press enter to continue ... "
+
+    read response
+
+    return 1
+
+}
+
 targetconnect() {
 
 
@@ -159,10 +182,10 @@ fi
 }
 
 
-items=(1 "Item 1"
-       2 "Item 2"
+items=(1 "Initiate Connection"
+       2 "Initial User setup"
        3 "Item 3"
-       4 "Install Software's")
+       4 "Install Softwares")
 
 while choice=$(dialog --title "$TITLE" \
                  --menu "Please select" 10 40 3 "${items[@]}" \
@@ -171,7 +194,7 @@ while choice=$(dialog --title "$TITLE" \
     case $choice in
         1) initconnect
         ;; # some action on 1
-        2) targetconnect
+        2) inituser
 	;; # some action on 2
  	3) softscripts
 	;;
