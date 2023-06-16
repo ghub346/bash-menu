@@ -28,6 +28,23 @@ targetconnect() {
 
 }
 
+softscripts() {
+declare -a saisoft
+
+for script in /home/baller175/apps/devops/auto/scripts-auto-install/software/*.sh
+do
+    saisoft=(${saisoft[*]} "$script")
+done
+
+for item in "${saisoft[@]}"
+do
+    echo "ITEM: *** $item ***"
+done
+
+
+
+}
+
 
 # Make initial connection automatically.
 
@@ -88,7 +105,7 @@ while choice=$(dialog --title "$TITLE" \
     case $choice in
         1) initconnect
         ;; # some action on 1
-        2) 
+        2) softscripts
 	;; # some action on 2
         *) ;; # some action on other
     esac
