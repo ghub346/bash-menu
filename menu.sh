@@ -24,7 +24,7 @@ servercreds() {
 
 targetconnect() {
 
-	echo "uname -a" | sshpass -p $PASSWORD ssh root@$serverip /bin/bash
+	echo "$1" | sshpass -p $PASSWORD ssh root@$serverip /bin/bash
 
         echo -n "Press enter to continue ... "
         read response
@@ -123,7 +123,7 @@ while choice=$(dialog --title "$TITLE" \
 	;; # some action on 2
  	3) softscripts
 	;;
- 	4) softscripts
+ 	4) targetconnect ${saisoft[13]}
 	;;
         *) ;; # some action on other
     esac
