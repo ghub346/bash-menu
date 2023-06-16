@@ -24,7 +24,7 @@ servercreds() {
 
 targetconnect() {
 
-	echo "uname -a" | sshpass -p $PASSWORD ssh root@$serverip /bin/bash
+	 | sshpass -p $PASSWORD ssh root@$serverip /bin/bash
 
         echo -n "Press enter to continue ... "
         read response
@@ -57,6 +57,54 @@ done
 
 }
 
+
+scriptsinstall() {
+
+	echo "Here, we'll install some of our needed scripts.
+
+ 	PS3="Select additional software to install:  "
+
+select opt in tailscale megacmd docker node quit
+do
+    case $opt in
+        "tailscale")
+            echo "Install Tailscale"	
+
+    	    echo "${saisoft[13]}" targetconnect
+#      	    sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-tailscale.sh
+      
+      ;;
+        "megacmd")
+                 echo "Install Mega"
+      sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-megacmd.sh
+
+      ;;
+        "docker")
+           echo "$opt - Installation will now take place."
+	   sshpass -p $PASSWORD ssh root@$serverip "bash -s" < /home/baller175/apps/devops/auto/scripts-auto-install/software/install-docker.sh   
+      ;;
+        "node")
+           echo "$opt - let's prepare for a lot of compilation";;
+        "quit")
+           echo "We're done"
+           break;;
+        *)
+           echo "Ooops";;
+    esac
+done
+
+    ### Option's to install Tailscale, Megacmd, ...  Can also check option's,to perform additional task's such as post configuratiom, etc... etc...
+    
+	echo "uname -a" | sshpass -p $PASSWORD ssh root@$serverip /bin/bash
+
+
+
+        echo -n "Press enter to continue ... "
+        read response
+
+        return 1
+
+}
 
 # Make initial connection automatically.
 
@@ -110,7 +158,7 @@ fi
 items=(1 "Item 1"
        2 "Item 2"
        3 "Item 3"
-       4 "Install Software's")
+       4 "Install Softwares")
 
 while choice=$(dialog --title "$TITLE" \
                  --menu "Please select" 10 40 3 "${items[@]}" \
@@ -122,7 +170,8 @@ while choice=$(dialog --title "$TITLE" \
         2) targetconnect
 	;; # some action on 2
  	3) softscripts
-	;;
+  	scriptsinstall
+	;; 
  	4) softscripts
 	;;
         *) ;; # some action on other
