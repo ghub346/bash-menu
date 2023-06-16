@@ -24,7 +24,25 @@ servercreds() {
 
 targetconnect() {
 
-	sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "$1"
+
+declare -a saisoft
+
+for script in /home/baller175/apps/devops/auto/scripts-auto-install/software/*.sh
+do
+    saisoft=(${saisoft[*]} "$script")
+done
+
+for item in "${!saisoft[@]}"
+do
+  echo " index---------------content"
+  echo " $item                  ${saisoft[$item]}"
+
+    
+    echo "ITEM: *** $item ***"
+done
+
+
+	sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[13]}"
 
         echo -n "Press enter to continue ... "
         read response
@@ -123,8 +141,7 @@ while choice=$(dialog --title "$TITLE" \
 	;; # some action on 2
  	3) softscripts
 	;;
- 	4) echo "${saisoft[13]}"
-  	sleep 10
+ 	4) targetconnect
 	;;
         *) ;; # some action on other
     esac
