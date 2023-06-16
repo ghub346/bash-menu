@@ -156,7 +156,7 @@ do
            echo "$opt - let's prepare for a lot of compilation";;
         "node")
            echo "$opt - let's prepare for a lot of compilation";;
-        "Quit")
+        "quit")
            echo "We're done"
            break;;
         *)
