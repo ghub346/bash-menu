@@ -22,6 +22,12 @@ servercreds() {
 
 }
 
+targetconnect() {
+
+	sshpass -p $PASSWORD ssh root@$serverip "bash -s" <
+
+}
+
 
 # Make initial connection automatically.
 
@@ -82,7 +88,8 @@ while choice=$(dialog --title "$TITLE" \
     case $choice in
         1) initconnect
         ;; # some action on 1
-        2) ;; # some action on 2
+        2) 
+	;; # some action on 2
         *) ;; # some action on other
     esac
 done
