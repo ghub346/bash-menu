@@ -65,27 +65,34 @@ do
 done
 
 
-select soft in Tailscale MegaCMD Docker
+select soft in Tailscale MegaCMD Docker CloudPanel
 do
 
 case $soft in
 # Two case values are declared here for matching
 "Tailscale")
 echo "I also use $soft."
-sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[13]}"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[14]}"
 ;;
 
 # Three case values are declared here for matching
 "MegaCMD")
 echo "Why don't you try Linux?"
-sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[6]}"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[7]}"
 ;;
 
-# Three case values are declared here for matching
+# Three case values are declared here for matching	
 "Docker")
 echo "Why don't you try Linux?"
-sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[3]}"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[4]}"
 ;;
+
+# Three case values are declared here for matching	
+"CloudPanel")
+echo "Why don't you try Linux?"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[2]}"
+;;
+
 
 
 # Matching with invalid data
