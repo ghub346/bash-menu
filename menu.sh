@@ -72,7 +72,7 @@ case $soft in
 # Two case values are declared here for matching
 "Tailscale")
 echo "I also use $soft."
-sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[14]}"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[15]}"
 ;;
 
 # Three case values are declared here for matching
