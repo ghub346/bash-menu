@@ -65,7 +65,7 @@ do
 done
 
 
-select soft in Tailscale MegaCMD Docker CloudPanel
+select soft in Tailscale MegaCMD Docker Hestia
 do
 
 case $soft in
@@ -88,9 +88,9 @@ sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[4]}"
 ;;
 
 # Three case values are declared here for matching	
-"CloudPanel")
+"Hestia")
 echo "Why don't you try Linux?"
-sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[2]}"
+sshpass -p $PASSWORD ssh root@$serverip "/bin/bash -s" < "${saisoft[6]}"
 ;;
 
 
